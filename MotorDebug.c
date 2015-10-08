@@ -45,8 +45,10 @@ task FlywheelTesting
   int flywheelPower = 0;
   while(true)
   {
-      displayLCDCenteredString(1, "Flywheel Power: %d", flywheelPower);
-      displayLCDString("Less        Moar");
+  		string display;
+  		sprintf(display, "Flywheel: ", flywheelPower);
+      displayLCDCenteredString(0, display);
+      displayLCDString(1, 0, "Less        Moar");
 
       // Increment or deincrement flywheel speed based on button press
       if(nLCDButtons == leftButton)
@@ -80,8 +82,10 @@ task IntakeTesting
   int intakePower = 0;
   while(true)
   {
-      displayLCDCenteredString(1, "Intake Power: %d", intakePower);
-      displayLCDString("Less        Moar");
+  		string display;
+  		sprintf(display, "Intake: ", intakePower);
+      displayLCDCenteredString(0, display);
+      displayLCDString(1, 0, "Less        Moar");
 
       // Increment or deincrement flywheel speed based on button press
       if(nLCDButtons == leftButton)
@@ -95,11 +99,11 @@ task IntakeTesting
         intakePower++;
       }
 
-      if(flywheelPower > 127)
+      if(intakePower > 127)
       {
         intakePower = 127;
       }
-      else if(flywheelPower < -127)
+      else if(intakePower < -127)
       {
         intakePower = -127;
       }
@@ -114,8 +118,10 @@ task DriveTesting
   int drivePower = 0;
   while(true)
   {
-      displayLCDCenteredString(1, "Drive Power: %d", drivePower);
-      displayLCDString("Less        Moar");
+  		string display;
+  		sprintf(display, "Drive: ", drivePower);
+      displayLCDCenteredString(0, display);
+      displayLCDString(1, 0,"Less        Moar");
 
       // Increment or deincrement flywheel speed based on button press
       if(nLCDButtons == leftButton)
@@ -129,11 +135,11 @@ task DriveTesting
         drivePower++;
       }
 
-      if(flywheelPower > 127)
+      if(drivePower > 127)
       {
         drivePower = 127;
       }
-      else if(flywheelPower < -127)
+      else if(drivePower < -127)
       {
         drivePower = -127;
       }
@@ -286,4 +292,6 @@ task main()
       break;
     }
 
+    // Keep the Program Running
+    while(true){ wait1Msec(25); }
 }
